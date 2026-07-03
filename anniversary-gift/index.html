@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 6 Months, My Love! ❤️</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+    <!-- CURSOR TRAIL (created by JS) -->
+    <div id="cursorTrail"></div>
+
+    <!-- Spotify Music Widget -->
+    <div class="spotify-widget" id="spotifyWidget">
+        <button class="spotify-minimize-btn" id="spotifyMinimize" title="Minimize">⌄</button>
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0tgVpDi06FyKpA1z0VMD4v?utm_source=generator&si=50008c9e0a7a42ef" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <!-- Background Particle & Sparkle Canvas -->
+    <canvas id="sparkleCanvas"></canvas>
+
+    <!-- PHOTO LIGHTBOX -->
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <button class="lightbox-close" id="lightboxClose">✕</button>
+        <img src="" alt="" class="lightbox-img" id="lightboxImg">
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+
+    <!-- CELEBRATION MODAL -->
+    <div class="celebration-modal" id="celebrationModal">
+        <div class="celebration-content">
+            <div class="celebration-emoji">💝</div>
+            <h2 class="celebration-title">You Claimed Your Gift!</h2>
+            <p class="celebration-msg">You are my greatest adventure, my softest landing, and my favorite person in the whole universe. Thank you for choosing me every single day. Here's to forever with you.</p>
+            <div class="celebration-hearts">
+                <span>❤️</span><span>💖</span><span>🌸</span><span>✨</span><span>💕</span>
+            </div>
+            <button class="celebration-close-btn" id="celebrationClose">
+                <i class="fas fa-heart"></i> With all my love
+            </button>
+        </div>
+    </div>
+
+    <!-- ENVELOPE ENTRANCE (Overlay screen) -->
+    <div class="envelope-overlay" id="envelopeOverlay">
+        <!-- Floating background petals -->
+        <div class="envelope-bg-petals">
+            <span>🌸</span><span>❤️</span><span>✨</span><span>🌹</span>
+            <span>💖</span><span>🌸</span><span>❤️</span><span>✨</span>
+        </div>
+
+        <!-- Hero opening photo -->
+        <div class="hero-opening-photo">
+            <div class="hero-photo-frame">
+                <div class="hero-photo-inner">
+                    <img src="https://i.pinimg.com/736x/de/cc/d6/deccd6216a884c57e159bb113bba10d0.jpg" alt="Our Love" class="hero-opening-img">
+                </div>
+                <div class="hero-photo-decoration">
+                    <span class="deco-heart deco-1">❤️</span>
+                    <span class="deco-heart deco-2">✨</span>
+                    <span class="deco-heart deco-3">🌸</span>
+                    <span class="deco-heart deco-4">💕</span>
+                </div>
+            </div>
+            <p class="hero-photo-caption">6 Months of Us 💝</p>
+        </div>
+
+        <div class="envelope-wrapper">
+            <div class="envelope" id="envelope">
+                <div class="envelope-flap" id="envelopeFlap"></div>
+                <div class="envelope-paper" id="envelopePaper">
+                    <h2 class="paper-title">A Special Surprise</h2>
+                    <p class="paper-preview">To my favorite person in the whole wide world...</p>
+                    <button class="open-letter-btn" id="openLetterBtn">Read Me <i class="fas fa-heart"></i></button>
+                </div>
+                <div class="envelope-front"></div>
+                <div class="wax-seal" id="waxSeal">
+                    <div class="seal-inner">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="click-hint">Click the wax seal to open your surprise ✨</div>
+        </div>
+    </div>
+
+    <!-- MAIN EXPERIENCE -->
+    <main class="main-container" id="mainContainer">
+        
+        <!-- SECTION 1: HERO & RELATIONSHIP COUNTER -->
+        <section class="hero-section" id="heroSection">
+            <div class="floating-shapes">
+                <div class="shape shape-1">❤️</div>
+                <div class="shape shape-2">✨</div>
+                <div class="shape shape-3">🌸</div>
+                <div class="shape shape-4">🧁</div>
+                <div class="shape shape-5">💫</div>
+                <div class="shape shape-6">🌹</div>
+            </div>
+
+            <div class="hero-layout">
+
+                <!-- LEFT: Couple Photo + Quote -->
+                <div class="hero-left animate-txt">
+                    <!-- Decorative Photo Frame -->
+                    <div class="couple-main-frame">
+                        <div class="couple-frame-border">
+                            <span class="frame-corner corner-tl">🌸</span>
+                            <span class="frame-corner corner-tr">✨</span>
+                            <span class="frame-corner corner-bl">💕</span>
+                            <span class="frame-corner corner-br">🌹</span>
+                            <div class="frame-sparkles">
+                                <span>✨</span><span>💖</span><span>🌸</span><span>⭐</span>
+                            </div>
+                            <img
+                                src="https://i.pinimg.com/736x/8c/c9/49/8cc9491a0271bf3cba0a1d3cc83fddb0.jpg"
+                                alt="Us together"
+                                class="couple-photo-img polaroid-clickable"
+                                data-src="https://i.pinimg.com/736x/8c/c9/49/8cc9491a0271bf3cba0a1d3cc83fddb0.jpg"
+                                data-caption="Us, always 💝"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Quote & Tags -->
+                    <div class="hero-quote-block">
+                        <p class="couple-quote-text">
+                            In you, I found the home I never knew I was looking for — every second feels like the universe saying <em>"this is exactly right."</em>
+                        </p>
+                        <p class="couple-quote-author">— Just us, forever 🌙</p>
+                        <div class="couple-tag-row">
+                            <span class="couple-tag">💑 6 Months Strong</span>
+                            <span class="couple-tag">❤️ My Person</span>
+                            <span class="couple-tag">✨ Our Story</span>
+                            <span class="couple-tag">🌸 You &amp; Me</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Title + Heart + Counter -->
+                <div class="hero-right">
+                    <div class="hero-badge animate-txt">💝 6 Month Anniversary 💝</div>
+                    <h1 class="hero-title animate-txt">Happy 6 Months, My Love!</h1>
+                    <p class="hero-subtitle animate-txt">Every second with you is a dream come true...</p>
+
+                    <!-- 3D-Like Heart Canvas -->
+                    <div class="heart-3d-container">
+                        <canvas id="heart3dCanvas"></canvas>
+                        <div class="heart-instructions">Hover or click to play with the particles</div>
+                    </div>
+
+                    <!-- Love counter -->
+                    <div class="counter-card glass-panel animate-txt">
+                        <h3 class="counter-header">Time We've Spent Together</h3>
+                        <div class="counter-grid">
+                            <div class="counter-item">
+                                <span class="counter-val" id="countDays">00</span>
+                                <span class="counter-label">Days</span>
+                            </div>
+                            <div class="counter-item">
+                                <span class="counter-val" id="countHours">00</span>
+                                <span class="counter-label">Hours</span>
+                            </div>
+                            <div class="counter-item">
+                                <span class="counter-val" id="countMinutes">00</span>
+                                <span class="counter-label">Minutes</span>
+                            </div>
+                            <div class="counter-item">
+                                <span class="counter-val" id="countSeconds">00</span>
+                                <span class="counter-label">Seconds</span>
+                            </div>
+                        </div>
+                        <div class="counter-milliseconds" id="countMillis">.000</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 2: MEMORY LANE TIMELINE -->
+        <section class="timeline-section" id="timelineSection">
+            <div class="section-header">
+                <h2 class="section-title">Our Memory Lane</h2>
+                <p class="section-subtitle">A look back at some of our favorite moments... <em>(click photos to enlarge)</em></p>
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot">❤️</div>
+                    <div class="timeline-content glass-panel">
+                        <div class="polaroid polaroid-clickable" data-src="https://i.pinimg.com/736x/19/8c/28/198c281c5c6b4a59c20860acdd580457.jpg" data-caption="Where it all began... ☕✨">
+                            <img src="https://i.pinimg.com/736x/19/8c/28/198c281c5c6b4a59c20860acdd580457.jpg" alt="The Beginning" class="polaroid-img">
+                            <div class="polaroid-caption">Where it all began... ☕✨</div>
+                            <div class="polaroid-zoom-hint">🔍 Click to enlarge</div>
+                        </div>
+                        <div class="milestone-details">
+                            <span class="milestone-date">Day 1</span>
+                            <h3>The First Spark</h3>
+                            <p>From that very first message, something felt different. The laughter, the butterflies, and the instant connection that started our beautiful journey.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot">🌸</div>
+                    <div class="timeline-content glass-panel">
+                        <div class="polaroid polaroid-clickable" data-src="https://i.pinimg.com/736x/44/87/11/448711275841cb28e0021ec920233d8a.jpg" data-caption="Late nights & deep talks 📱🌙">
+                            <img src="https://i.pinimg.com/736x/44/87/11/448711275841cb28e0021ec920233d8a.jpg" alt="Sweet Moments" class="polaroid-img">
+                            <div class="polaroid-caption">Late nights &amp; deep talks 📱🌙</div>
+                            <div class="polaroid-zoom-hint">🔍 Click to enlarge</div>
+                        </div>
+                        <div class="milestone-details">
+                            <span class="milestone-date">Month 3</span>
+                            <h3>Deepening Our Bond</h3>
+                            <p>Hours felt like minutes when talking to you. Sharing secrets, future dreams, and falling in love a little more every single day.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot">💖</div>
+                    <div class="timeline-content glass-panel">
+                        <div class="polaroid polaroid-clickable" data-src="https://i.pinimg.com/736x/1c/f7/32/1cf732ea266bcd0dda093fe6a3e1e778.jpg" data-caption="6 Months & counting... 🥂🌹">
+                            <img src="https://i.pinimg.com/736x/1c/f7/32/1cf732ea266bcd0dda093fe6a3e1e778.jpg" alt="Anniversary" class="polaroid-img">
+                            <div class="polaroid-caption">6 Months &amp; counting... 🥂🌹</div>
+                            <div class="polaroid-zoom-hint">🔍 Click to enlarge</div>
+                        </div>
+                        <div class="milestone-details">
+                            <span class="milestone-date">Today</span>
+                            <h3>Happy Half Year!</h3>
+                            <p>Six months of smiles, hugs, inside jokes, and unwavering support. I am so incredibly grateful for you, and I can't wait for all the milestones ahead.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- SECTION 3: REASONS WHY I LOVE YOU (Flip cards) -->
+        <section class="reasons-section" id="reasonsSection">
+            <div class="section-header">
+                <h2 class="section-title">Reasons I Love You</h2>
+                <p class="section-subtitle">Click the cards to reveal some of the endless reasons...</p>
+            </div>
+            
+            <div class="cards-carousel-container">
+                <div class="cards-deck" id="cardsDeck">
+                    <!-- Reason Card 1 -->
+                    <div class="love-card" data-tilt>
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-num">01</div>
+                                <i class="fas fa-laugh-beam card-icon"></i>
+                                <h3>Your Smile</h3>
+                                <p>Hover and click to flip me...</p>
+                            </div>
+                            <div class="card-back">
+                                <h3>It Lights Up My World</h3>
+                                <p>Your smile is literally the most beautiful thing in existence. No matter how tough my day is, seeing you smile instantly makes everything perfect.</p>
+                                <span class="card-heart">❤️</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Reason Card 2 -->
+                    <div class="love-card" data-tilt>
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-num">02</div>
+                                <i class="fas fa-hand-holding-heart card-icon"></i>
+                                <h3>Your Kindness</h3>
+                                <p>Hover and click to flip me...</p>
+                            </div>
+                            <div class="card-back">
+                                <h3>Your Caring Soul</h3>
+                                <p>The way you care for people, how you listen, and the warmth you radiate. You make the world a much gentler, happier place.</p>
+                                <span class="card-heart">❤️</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Reason Card 3 -->
+                    <div class="love-card" data-tilt>
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-num">03</div>
+                                <i class="fas fa-mug-hot card-icon"></i>
+                                <h3>Our Inside Jokes</h3>
+                                <p>Hover and click to flip me...</p>
+                            </div>
+                            <div class="card-back">
+                                <h3>The Silly Moments</h3>
+                                <p>I love how we can be completely weird and silly together without any filter. Our shared laughs are my absolute favorite memories.</p>
+                                <span class="card-heart">❤️</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reason Card 4 -->
+                    <div class="love-card" data-tilt>
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-num">04</div>
+                                <i class="fas fa-anchor card-icon"></i>
+                                <h3>Your Support</h3>
+                                <p>Hover and click to flip me...</p>
+                            </div>
+                            <div class="card-back">
+                                <h3>My Safe Haven</h3>
+                                <p>You believe in me even when I doubt myself. Knowing you are by my side gives me the strength to conquer anything.</p>
+                                <span class="card-heart">❤️</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reason Card 5 -->
+                    <div class="love-card" data-tilt>
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-num">05</div>
+                                <i class="fas fa-star card-icon"></i>
+                                <h3>Your Strength</h3>
+                                <p>Hover and click to flip me...</p>
+                            </div>
+                            <div class="card-back">
+                                <h3>My Inspiration</h3>
+                                <p>Watching you face challenges with grace and courage pushes me to be better every single day. You are my greatest inspiration.</p>
+                                <span class="card-heart">❤️</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reason Card 6 -->
+                    <div class="love-card" data-tilt>
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-num">06</div>
+                                <i class="fas fa-music card-icon"></i>
+                                <h3>Your Voice</h3>
+                                <p>Hover and click to flip me...</p>
+                            </div>
+                            <div class="card-back">
+                                <h3>My Favorite Sound</h3>
+                                <p>The way you talk, the way you laugh, the way you say my name — it's the most beautiful melody I've ever heard.</p>
+                                <span class="card-heart">❤️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: FLOWER BOUQUET BUILDER -->
+        <section class="flower-section" id="flowerSection">
+            <div class="section-header">
+                <h2 class="section-title">Build Your Bouquet</h2>
+                <p class="section-subtitle">Pick flowers to build your own gorgeous virtual arrangement!</p>
+            </div>
+            
+            <div class="bouquet-workspace">
+                <div class="flower-selector">
+                    <h3>Select Flowers:</h3>
+                    <div class="flower-buttons">
+                        <button class="flower-btn red-rose" data-flower="red-rose">
+                            <span class="btn-emoji">🌹</span> Red Rose
+                        </button>
+                        <button class="flower-btn pink-tulip" data-flower="pink-tulip">
+                            <span class="btn-emoji">🌷</span> Tulip
+                        </button>
+                        <button class="flower-btn sunflower" data-flower="sunflower">
+                            <span class="btn-emoji">🌻</span> Sunflower
+                        </button>
+                        <button class="flower-btn daisy" data-flower="daisy">
+                            <span class="btn-emoji">🌼</span> Daisy
+                        </button>
+                        <button class="flower-btn lavender" data-flower="lavender">
+                            <span class="btn-emoji">🌾</span> Lavender
+                        </button>
+                    </div>
+                    
+                    <div class="bouquet-controls">
+                        <button class="control-btn" id="resetBouquet"><i class="fas fa-trash-alt"></i> Reset Vase</button>
+                        <button class="control-btn primary-btn" id="wrapBouquet"><i class="fas fa-ribbon"></i> Tie with Ribbon</button>
+                    </div>
+                </div>
+                
+                <div class="vase-canvas-container">
+                    <div class="bouquet-container" id="bouquetContainer">
+                        <!-- Flowers will dynamically load and animate here -->
+                        <div class="ribbon-overlay" id="ribbonOverlay">🎀</div>
+                    </div>
+                    <div class="vase">
+                        <div class="vase-neck"></div>
+                        <div class="vase-body">
+                            <div class="vase-water"></div>
+                            <div class="vase-reflection"></div>
+                            <span class="vase-logo">❤️</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: LOVE JAR & LOVE LETTERS -->
+        <section class="jar-section" id="jarSection">
+            <div class="section-header">
+                <h2 class="section-title">The Magic Love Jar</h2>
+                <p class="section-subtitle">Click the jar to release sweet little thoughts and floating hearts...</p>
+            </div>
+            
+            <div class="jar-container-wrapper">
+                <div class="jar" id="loveJar">
+                    <div class="jar-lid"></div>
+                    <div class="jar-body">
+                        <div class="jar-lights">
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="jar-tag">Love Notes</div>
+                        <div class="jar-hearts-inside">
+                            <span>❤️</span><span>💖</span><span>🌸</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Container for floating elements -->
+                <div class="floating-note-container" id="floatingNoteContainer"></div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: THE FINAL LOVE LETTER -->
+        <section class="letter-section" id="letterSection">
+            <div class="letter-scroll glass-panel">
+                <div class="scroll-top"></div>
+                <div class="letter-body-content">
+                    <div class="letter-header-decor">✨ 💖 ✨</div>
+                    <h2 class="letter-title">My Dearest...</h2>
+                    
+                    <p class="letter-paragraph">
+                        Happy 6-month anniversary! It feels absolutely wild that half a year has flown by already. 
+                        It honestly feels like we just met, yet somehow I also feel like I've known you my entire life. 
+                        You have brought so much peace, laughter, and light into my days.
+                    </p>
+                    
+                    <p class="letter-paragraph">
+                        Thank you for listening to my stories, holding my hand, laughing at my terrible jokes, and being 
+                        the absolute best partner I could have ever asked for. You inspire me to be a better person, 
+                        and your happiness is my favorite thing to protect.
+                    </p>
+                    
+                    <p class="letter-paragraph">
+                        This is just a little token of how much you mean to me, a digital garden of our memories that 
+                        you can keep forever. I promise to keep adding milestones to our timeline and flowers to our 
+                        bouquet.
+                    </p>
+                    
+                    <p class="letter-paragraph">
+                        Here's to us, to our laughs, to our quiet moments, and to many, many more months of loving you. 
+                        Happy 6 months, beautiful. I love you more than words can say.
+                    </p>
+                    
+                    <div class="letter-signature">
+                        <p>Yours forever &amp; always,</p>
+                        <p class="sig-name">Me ❤️</p>
+                    </div>
+                    
+                    <div class="kiss-button-container">
+                        <button class="kiss-btn" id="claimKissBtn">
+                            <span class="btn-face-normal"><i class="fas fa-gift"></i> Claim Anniversary Gift</span>
+                            <span class="btn-face-hover"><i class="fas fa-kiss-wink-heart"></i> Click Me!</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="scroll-bottom"></div>
+            </div>
+        </section>
+        
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>Made with ❤️ for you • 6 Months Anniversary • You are my everything 💝</p>
+        </footer>
+    </main>
+
+    <!-- Custom JavaScript modules -->
+    <script src="canvas-heart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
